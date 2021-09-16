@@ -1,31 +1,27 @@
 import React from "react";
 import Card from "./Card";
-import contact from "../contacts";
+import contacts from "../contacts";
 import Avatar from "./Avatar";
+
+function createCard(contact){
+  return (
+    <Card
+      id={contact.id}
+      key ={contact.id}
+      name={contact.name}
+      src={contact.src}
+      mobile={contact.mobile}
+      email={contact.email}
+    / >
+  );  
+}
 
 function App() {
   return (
     <div>
       <h1 className="heading">My Contacts</h1>
       <Avatar src="data:image/jpeg;base64,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" />
-      <Card
-        name={contact[2].name}
-        src={contact[2].src}
-        mobile={contact[2].mobile}
-        email={contact[2].email}
-      />
-      <Card
-        name={contact[1].name}
-        src={contact[1].src}
-        mobile={contact[1].mobile}
-        email={contact[1].email}
-      />
-      <Card
-        name={contact[0].name}
-        src={contact[0].src}
-        mobile={contact[0].mobile}
-        email={contact[0].email}
-      />
+      {contacts.map(createCard)}
     </div>
   );
 }
